@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 1130401014}
   - component: {fileID: 1130401013}
   - component: {fileID: 1130401012}
+  - component: {fileID: 1130401018}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -411,8 +412,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagName: Player
-  radius: 5
-  maxAngle: 0
+  radius: 4
+  maxAngle: 30
 --- !u!114 &1130401017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,6 +427,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perception: {fileID: 1130401016}
+  steering: {fileID: 1130401018}
+  maxSpeed: 4
+  maxForce: 2
+--- !u!114 &1130401018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130401011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678bf0761e8bd15439905e92f65163eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderDistance: 1
+  wanderRadius: 3
+  wanderDisplacement: 5
 --- !u!1 &1147768987
 GameObject:
   m_ObjectHideFlags: 0
