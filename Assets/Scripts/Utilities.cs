@@ -13,6 +13,9 @@ public class Utilities : MonoBehaviour
         // if result.x < min.x, result.x = max.x
         if (result.x < min.x) result.x = max.x;
 
+        if (result.z > max.z) result.z = min.z;
+        if (result.z < min.z) result.z = max.z;
+
         return result;
     }
 
