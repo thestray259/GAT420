@@ -23,6 +23,6 @@ public class Player : MonoBehaviour
         speed = 5; 
         transform.position += direction * speed * Time.deltaTime;
 
-        transform.position = Utilities.Wrap(transform.position, new Vector3(-10, -10, -10), new Vector3(10, 10, 10));
+        transform.position = Utilities.Wrap(transform.position, new Vector3(-20, -20, -20), new Vector3(20, 20, 20));
     }
 }
