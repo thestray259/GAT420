@@ -15,6 +15,7 @@ MonoBehaviour:
   maxSpeed: 10
   maxForce: 8
   seekWeight: 5
+  obstacleWeight: 10
   fleeWeight: 0
   cohesionWeight: 2
   separationWeight: 2

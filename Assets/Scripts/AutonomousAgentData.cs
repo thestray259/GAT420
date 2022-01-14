@@ -10,6 +10,7 @@ public class AutonomousAgentData : ScriptableObject
     [Range(0, 20)] public float maxForce = 8;
     [Header("Weight")]
     [Range(0, 5)] public float seekWeight = 1;
+    [Range(0, 20)] public float obstacleWeight = 1;
     [Range(0, 5)] public float fleeWeight = 1;
     [Range(0, 5)] public float cohesionWeight = 1;
     [Range(0, 5)] public float separationWeight = 1;
