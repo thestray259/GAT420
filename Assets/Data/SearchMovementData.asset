@@ -9,15 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5ccc5fa857c59a44834db462213a385, type: 3}
-  m_Name: AutonomousAgentData
+  m_Script: {fileID: 11500000, guid: 5f549b1a04c80f64cacf3884dabe0f34, type: 3}
+  m_Name: SearchMovementData
   m_EditorClassIdentifier: 
-  maxSpeed: 10
-  maxForce: 8
-  seekWeight: 0
-  obstacleWeight: 9.7
-  fleeWeight: 5
-  cohesionWeight: 1.98
-  separationWeight: 2
-  alignmentWeight: 2.16
-  separationRadius: 1
+  maxSpeed: 8
+  minSpeed: 2
+  maxForce: 16
+  orientToMovement: 1
