@@ -114,4 +114,113 @@ public static class Search
 
         return found;
     }
+
+    public static bool Dijkstra(GraphNode source, GraphNode destination, ref List<GraphNode> path, int maxSteps)
+    {
+        bool found = false;
+        var nodes = new SimplePriorityQueue<GraphNode>();
+        source.cost = 0;
+        nodes.Enqueue(source, source.cost);
+
+        int steps = 0; 
+        while (!found && nodes.Count > 0 && steps++ < maxSteps)
+        {
+            var node = nodes.Dequeue(); 
+
+            if (node == destination)
+            {
+                found = true;
+                break; 
+            }
+
+            foreach (var neighbor in node.neighbors)
+            {
+                neighbor.visited = true;
+
+                float cost = node.cost + node.DistanceTo(neighbor); 
+                if (cost < neighbor.cost)
+                {
+                    neighbor.cost = cost;
+                    neighbor.parent = node;
+
+                    nodes.EnqueueWithoutDuplicates(neighbor, cost); 
+                }
+            }
+        }
+
+        if (found)
+        {
+            path = new List<GraphNode>();
+            CreatePathFromParents(destination, ref path); 
+        }
+        else
+        {
+            path = nodes.ToList(); 
+        }
+
+        return found; 
+    }
+
+    public static bool AStar(GraphNode source, GraphNode destination, ref List<GraphNode> path, int maxSteps)
+    {
+        bool found = false;
+        var nodes = new SimplePriorityQueue<GraphNode>();
+        source.cost = 0;
+        float heuristic = Vector3.Distance(source.transform.position, destination.transform.position);
+        nodes.Enqueue(source, source.cost + heuristic);
+
+        int steps = 0; 
+        while (!found && nodes.Count > 0 && steps++ < maxSteps)
+        {
+            var node = nodes.Dequeue(); 
+
+            if (node == destination)
+            {
+                found = true;
+                break; 
+            }
+
+            foreach (var neighbor in node.neighbors)
+            {
+                neighbor.visited = true;
+                float cost = node.cost + node.DistanceTo(neighbor); 
+
+                if (cost < neighbor.cost)
+                {
+                    neighbor.cost = cost;
+                    neighbor.parent = node;
+                    heuristic = Vector3.Distance(neighbor.transform.position, destination.transform.position);
+
+                    nodes.EnqueueWithoutDuplicates(neighbor, cost + heuristic); 
+                }
+            }
+        }
+
+        if (found)
+        {
+            path = new List<GraphNode>();
+            CreatePathFromParents(destination, ref path); 
+        }
+        else
+        {
+            path = nodes.ToList(); 
+        }
+
+        return found; 
+    }
+
+    public static void CreatePathFromParents(GraphNode node, ref List<GraphNode> path)
+    {
+        // while node not null
+        while (node != null)
+        {
+            // add node to list path
+            path.Add(node);
+            // set node to node parent
+            node = node.parent;
+        }
+
+        // reverse path
+        path.Reverse();
+    }
 }

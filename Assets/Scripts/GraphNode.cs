@@ -45,4 +45,9 @@ public class GraphNode : Node
         var nodes = GetNodes<GraphNode>();
         nodes.ToList().ForEach(node => { node.visited = false; node.parent = null; node.cost = float.MaxValue; });
     }
+
+    public float DistanceTo(GraphNode node)
+    {
+        return Vector3.Distance(transform.position, node.transform.position);
+    }
 }
