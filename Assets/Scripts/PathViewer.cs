@@ -16,9 +16,10 @@ public class PathViewer : MonoBehaviour
 	[Range(0, 500)] public int steps = 0;
 	[SerializeField] GraphNodeSelector nodeSelector;
 	[SerializeField] SearchType searchType;
-	[SerializeField] [TextArea] string info; 
+	[SerializeField] bool visible = true; 
+	[SerializeField] [TextArea] string info;
 
-	public bool visible { get; set; } = true;
+	//public bool visible { get; set; } = true;
 
 	int prevSteps;
 	bool found = false;
@@ -52,11 +53,12 @@ public class PathViewer : MonoBehaviour
 			BuildPath();
 		}
 		prevSteps = steps;
+		var nodes = Node.GetNodes<GraphNode>();
+		nodes.ToList().ForEach(node => node.GetComponent<Renderer>().enabled = visible); 
 
 		if (visible)
 		{
 			// show node connections
-			var nodes = Node.GetNodes<GraphNode>();
 			nodes.ToList().ForEach(node => node.neighbors.ForEach(neighbor => Debug.DrawLine(node.transform.position, neighbor.transform.position)));
 
 			// reset graph nodes color
