@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class Agent : MonoBehaviour
 {
-    public Movement movement; 
+    public Movement movement;
+    public Animator animator; 
 
     public static T[] GetAgents<T>() where T : Agent
     {
