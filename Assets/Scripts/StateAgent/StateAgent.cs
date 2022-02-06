@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StateAgent : Agent
 {
-    public StateMachine stateMachine = new StateMachine(); 
+    public AgentPath path;
+    public StateMachine stateMachine = new StateMachine();
 
     void Start()
     {
@@ -16,11 +17,6 @@ public class StateAgent : Agent
     void Update()
     {
         stateMachine.Update(); 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            stateMachine.SetState(stateMachine.StateFromName("patrol"));
-        }
-
 
         if (movement.velocity.magnitude > 0.5f)
         {
@@ -30,5 +26,10 @@ public class StateAgent : Agent
         {
             animator.SetBool("walk", false);
         }
+    }
+
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(10, 10, 300, 20), stateMachine.GetStateName());
     }
 }
