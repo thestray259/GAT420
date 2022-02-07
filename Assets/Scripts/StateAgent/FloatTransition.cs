@@ -21,16 +21,16 @@ public class FloatTransition : Transition
 
 		switch (predicate)
 		{
-			/*			case Predicate.EQUAL:
-							result = (parameter == condition);
-							break;
-						case Predicate.LESS:
-							result = (parameter < condition);
-							break;
-						case Predicate.GREATER:
-							result = (parameter > condition);
-							break;*/
-			default:
+            case Predicate.EQUAL:
+                result = (parameter == condition);
+                break;
+            case Predicate.LESS:
+                result = (parameter < condition);
+                break;
+            case Predicate.GREATER:
+                result = (parameter > condition);
+                break;
+            default:
 				break;
 		}
 

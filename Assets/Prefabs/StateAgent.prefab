@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2225846297941417687}
+  - component: {fileID: 3828281288304593847}
   - component: {fileID: 7678217815126284753}
   - component: {fileID: 4296559017077161164}
   - component: {fileID: 2225846297941417686}
@@ -40,6 +41,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3828281288304593847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2225846297941417683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60bcdc0ec30ba0f429abe2103cdac663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: Player
+  raycastTransform: {fileID: 1933185249055334092}
+  distance: 4
+  angle: 80
+  numRaycast: 20
 --- !u!114 &7678217815126284753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +85,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 1210465505144320765}
   animator: {fileID: 0}
-  path: {fileID: 0}
+  pathFollower: {fileID: 0}
+  enemySeen:
+    value: 0
+  health:
+    value: 0
+  timer:
+    value: 0
 --- !u!33 &2225846297941417686
 MeshFilter:
   m_ObjectHideFlags: 0
