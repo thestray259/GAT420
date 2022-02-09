@@ -21,15 +21,21 @@ public class IntTransition : Transition
 
 		switch (predicate)
 		{
-/*			case Predicate.EQUAL:
-				result = ((int)parameter == condition);
-				break;
-			case Predicate.LESS:
-				result = ((int)parameter < condition);
+            case Predicate.EQUAL:
+                result = ((int)parameter == condition);
+                break;
+            case Predicate.LESS:
+                result = ((int)parameter < condition);
+                break;
+			case Predicate.LESS_EQUAL:
+				result = ((int)parameter <= condition);
 				break;
 			case Predicate.GREATER:
-				result = ((int)parameter > condition);
-				break;*/
+                result = ((int)parameter > condition);
+                break;
+			case Predicate.GREATER_EQUAL:
+				result = ((int)parameter >= condition);
+				break;
 			default:
 				break;
 		}
