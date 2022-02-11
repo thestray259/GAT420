@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Transition 
+public class Transition 
 {
-    public enum Predicate
+    Condition[] conditions; 
+
+    public Transition(Condition[] conditions)
     {
-        EQUAL, 
-        LESS, 
-        LESS_EQUAL,
-        GREATER,
-        GREATER_EQUAL
+        this.conditions = conditions; 
     }
 
-    public abstract bool ToTransition(); 
+    public bool ToTransition()
+    {
+        foreach (var condition in conditions)
+        {
+            if (condition.IsTrue() == false) return false; 
+        }
+
+        return true; 
+    }
 }
