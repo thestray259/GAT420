@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RoamState : State
 {
+    private NavMeshMovement movement;
     public RoamState(StateAgent owner, string name) : base(owner, name)
     {
     }
@@ -25,11 +26,9 @@ public class RoamState : State
 
     public override void OnUpdate()
     {
-        Movement movement; 
-        //if (movement.destination - owner.transform.position <= 1.5f) //< get distance between owner position and movement destination > <= 1.5
+        if (owner.movement.destination.magnitude - owner.transform.position.magnitude <= 1.5f) //< get distance between owner position and movement destination > <= 1.5
         {
             owner.atDestination.value = true;
         }
-
     }
 }
