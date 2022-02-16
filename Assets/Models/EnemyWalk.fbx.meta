@@ -49,7 +49,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -529,18 +529,18 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: skeletonzombie_t_avelange(Clone)
+    - name: Enemy(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: skeletonZombie
-      parentName: skeletonzombie_t_avelange(Clone)
+      parentName: Enemy(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Hips
-      parentName: skeletonzombie_t_avelange(Clone)
+      parentName: Enemy(Clone)
       position: {x: -0.000000043602913, y: 1.1673772, z: 0.009031205}
       rotation: {x: 1.6543612e-22, y: -6e-45, z: -3.351679e-23, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -876,7 +876,7 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 99ec0d3d3f69b1c46a65861d52910ac7, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 656d3a69b6331834dbc07ffd3dab2758, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
