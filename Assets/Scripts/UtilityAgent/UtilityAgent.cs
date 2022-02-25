@@ -6,10 +6,13 @@ using UnityEngine;
 public class UtilityAgent : Agent
 {
     [SerializeField] Perception perception; 
-    [SerializeField] MeterUI meter; 
+    [SerializeField] MeterUI meter;
+
+    const float MIN_SCORE = 0.2f; 
 
     Need[] needs;
     UtilityObject activeUtilityObject = null; 
+    public bool isUsingUtilityObject { get { return activeUtilityObject != null; } }
 
     public float happiness
     {
@@ -46,8 +49,15 @@ public class UtilityAgent : Agent
                 {
                     utilityObject.visible = true;
                     utilityObject.score = GetUtilityObjectScore(utilityObject); 
-                    utilityObjects.Add(utilityObject); 
+                    if (utilityObject.score > MIN_SCORE) utilityObjects.Add(utilityObject); 
                 }
+            }
+
+            // set active utility object to first utility object
+            activeUtilityObject = (utilityObjects.Count == 0) ? null : utilityObjects[0]; 
+            if (activeUtilityObject != null)
+            {
+                StartCoroutine(ExecuteUtilityObject(activeUtilityObject)); 
             }
         }
     }
@@ -56,6 +66,51 @@ public class UtilityAgent : Agent
     {
         meter.slider.value = happiness;
         meter.worldPosition = transform.position + Vector3.up * 4;
+    }
+
+    IEnumerator ExecuteUtilityObject(UtilityObject utilityObject)
+    {
+        // go to location
+        movement.MoveTowards(utilityObject.location.position); 
+        if (Vector3.Distance(transform.position, utilityObject.location.position) > 0.25f)
+        {
+            Debug.DrawLine(transform.position, utilityObject.location.position); 
+
+            yield return null; 
+        }
+
+        print("start effect"); 
+
+        // start effect
+        if (utilityObject.effect != null) utilityObject.effect.SetActive(true);
+
+        // wait duration
+        yield return new WaitForSeconds(utilityObject.duration);
+
+        print("stop effect"); 
+
+        // stop effect
+        if (utilityObject.effect != null) utilityObject.effect.SetActive(false);
+
+        // apply
+        ApplyUtilityObject(utilityObject);
+
+        activeUtilityObject = null; 
+
+        yield return null; 
+    }
+
+    void ApplyUtilityObject(UtilityObject utilityObject)
+    {
+        foreach (var effector in utilityObject.effectors)
+        {
+            Need need = GetNeedByType(effector.type);
+            if (need != null)
+            {
+                need.input += effector.change;
+                need.input = Mathf.Clamp(need.input, -1, 1); 
+            }
+        }
     }
 
     float GetUtilityObjectScore(UtilityObject utilityObject)
