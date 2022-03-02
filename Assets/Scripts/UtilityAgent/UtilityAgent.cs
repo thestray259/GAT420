@@ -8,7 +8,7 @@ public class UtilityAgent : Agent
     [SerializeField] Perception perception; 
     [SerializeField] MeterUI meter;
 
-    const float MIN_SCORE = 0.2f; 
+    const float MIN_SCORE = 0.3f; 
 
     Need[] needs;
     UtilityObject activeUtilityObject = null; 
@@ -133,6 +133,59 @@ public class UtilityAgent : Agent
     Need GetNeedByType(Need.Type type)
     {
         return needs.First(need => need.type == type); 
+    }
+
+    UtilityObject GetHighestUtilityObject(UtilityObject[] utilityObjects)
+    {
+        UtilityObject highestUtilityObject = null;
+        float highestScore = MIN_SCORE;
+        foreach (var utilityObject in utilityObjects)
+        {
+            // get the score of the utility object
+            float score = GetUtilityObjectScore(utilityObject);
+            // if score > highest score then set new highest score and highest utility object
+            if (score > highestScore)
+            {
+                highestScore = score;
+                highestUtilityObject = utilityObject; 
+            }
+        }
+        return highestUtilityObject;
+    }
+
+    UtilityObject GetRandomUtilityObject(UtilityObject[] utilityObjects)
+    {
+        // evaluate all utility objects
+        float[] scores = new float[utilityObjects.Length];
+        float totalScore = 0;
+        for (int i = 0; i < utilityObjects.Length; i++)
+        {
+            // <get the score of the utility objects[i]>
+            float score = GetUtilityObjectScore(utilityObjects[i]);
+            // <set the scores[i] to the score>
+            scores[i] = score;
+            // <add score to total score>
+            totalScore += score; 
+        }
+
+        // select random utility object based on score
+        // the higher the score the greater the chance of being randomly selected
+
+        // <float random = value between 0 and totalScore>
+        float random = Random.Range(0, totalScore); 
+        for (int i = 0; i < scores.Length; i++)
+        {
+            // <check if random value is less than scores[i]>
+            // <return utilityObjects[i] if less than>
+            // <subtract scores[i] from random value>
+            if (random < scores[i])
+            {
+                return utilityObjects[i];
+            }
+            random -= scores[i]; 
+        }
+
+        return null;
     }
 
     private void OnGUI()
