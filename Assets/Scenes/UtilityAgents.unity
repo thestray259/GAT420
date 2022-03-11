@@ -1125,6 +1125,10 @@ PrefabInstance:
       value: Wall_Door_01_Blue (1)
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 2927856942b23d54296a5ada1c0bb7cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2927856942b23d54296a5ada1c0bb7cc, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -2447,7 +2451,7 @@ MonoBehaviour:
   effect: {fileID: 1044774299}
   effectors:
   - type: 0
-    change: 1
+    change: 2
   - type: 1
     change: -0.1
   - type: 2

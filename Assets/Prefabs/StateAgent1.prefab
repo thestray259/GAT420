@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 5195309162329544459}
   - component: {fileID: 5741442857749302363}
   - component: {fileID: 9070255830224016663}
+  - component: {fileID: 2460188120444997073}
   m_Layer: 0
   m_Name: StateAgent1
   m_TagString: Agent1
@@ -260,6 +261,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementData: {fileID: 11400000, guid: 87e17973d6300194890cb73689acce29, type: 2}
   navMeshAgent: {fileID: 5741442857749302363}
+--- !u!114 &2460188120444997073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8345065671381236025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9dc50f364705c648b2896f243bdec28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: Agent1
+  distance: 1
+  healValue: 10
 --- !u!1001 &7866779652032061371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -319,6 +335,16 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 1b681c1fbb1db704a85a2a2276c25e17, type: 2}
+    - target: {fileID: 5866666021909216657, guid: c23e3cfad99f5be4dbab5fb04809cde4, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+        'mixamorig:LeftHandThumb2'\n\tTransform 'mixamorig:LeftHandIndex1'\n\tTransform
+        'mixamorig:LeftHandPinky2'\n\tTransform 'mixamorig:RightHandRing2'\n\tTransform
+        'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:RightArm'\n\tTransform
+        'mixamorig:LeftLeg'\n\tand more ...\n\tFrom animation clip 'Heal'"
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: c23e3cfad99f5be4dbab5fb04809cde4, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0

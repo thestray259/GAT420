@@ -143,7 +143,6 @@ public class UtilityAgent : Agent
         {
             // get the score of the utility object
             float score = GetUtilityObjectScore(utilityObject);
-            // if score > highest score then set new highest score and highest utility object
             if (score > highestScore)
             {
                 highestScore = score;
@@ -160,24 +159,17 @@ public class UtilityAgent : Agent
         float totalScore = 0;
         for (int i = 0; i < utilityObjects.Length; i++)
         {
-            // <get the score of the utility objects[i]>
             float score = GetUtilityObjectScore(utilityObjects[i]);
-            // <set the scores[i] to the score>
             scores[i] = score;
-            // <add score to total score>
             totalScore += score; 
         }
 
         // select random utility object based on score
         // the higher the score the greater the chance of being randomly selected
 
-        // <float random = value between 0 and totalScore>
         float random = Random.Range(0, totalScore); 
         for (int i = 0; i < scores.Length; i++)
         {
-            // <check if random value is less than scores[i]>
-            // <return utilityObjects[i] if less than>
-            // <subtract scores[i] from random value>
             if (random < scores[i])
             {
                 return utilityObjects[i];
